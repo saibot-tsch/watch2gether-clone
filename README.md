@@ -98,4 +98,4 @@ Tobias Scharl - ScharlT.coding@gmail.com
 * [UUID](https://www.npmjs.com/package/uuid)
 * [Heroku](https://heroku.com)
 
-Also thanks to <a href="https://stackoverflow.com">Stackoverflow</a> and many more helping me while programming :)
+Also thanks to <a href="https://stackoverflow.com">Stackoverflow</a> ;)
