@@ -99,40 +99,34 @@ const socket = io()
 
 // Server & Socket Events
 socket.on("socket_connection_limit", () => {
-    sessionStorage.setItem('socket_connection_limit', true)
-
-    window.location = DOMAIN
+    addDisconnectMsg('socket_connection_limit');
 })
 
 socket.on("socket_user_limit", () => {
-    sessionStorage.setItem('socket_user_limit', true)
-
-    window.location = DOMAIN
+    addDisconnectMsg('socket_user_limit');
 })
 
 socket.on('socket_connection_ban', () => {
-    sessionStorage.setItem('socket_connection_ban', true)
-
-    window.location = DOMAIN
+    addDisconnectMsg('socket_connection_ban');
 })
 
 socket.on("socket_invalid_input", () => {
-    sessionStorage.setItem('socket_invalid_input', true)
-
-    window.location = DOMAIN
+    addDisconnectMsg('socket_invalid_input');
 })
 
 socket.on('disconnect', () => {
-    sessionStorage.setItem('socket_disconnect_error', true)
-
-    window.location = DOMAIN
+    addDisconnectMsg('socket_disconnect_error');
 })
 
 socket.io.on("reconnect_error", () => {
-    sessionStorage.setItem('socket_reconnect_error', true)
+    addDisconnectMsg('socket_reconnect_error');
+});
+
+function addDisconnectMsg(msg) { 
+    sessionStorage.setItem(msg, true)
 
     window.location = DOMAIN
-});
+}
 
 // Myself Initialization
 socket.on('user-init', (data) => {
