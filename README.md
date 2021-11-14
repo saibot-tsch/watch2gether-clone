@@ -1,8 +1,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <img src="https://s20.directupload.net/images/210824/upb4hkjt.png" alt="Showcase Image">
-  
   <h3 align="center">Watch2Gether Clone</h3>
 
   <p align="center">
