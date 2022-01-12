@@ -2,7 +2,6 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const socketio = require('socket.io');
-require('colors');
 
 // Utils
 const rateLimiter = require('./utils/rateLimiter')
