@@ -22,7 +22,7 @@
 I made this project because there are no good Watch2Gether / Youtube Video Synchronize Website Clones out there with that many features. Also I wanted to challenge  myself and test my Node.js and Socket.io skills. Worth mentioning I'm not a expert in Web Development, so I would love to get feedback from you.
 
 
-Why you should use my Watch2Gether Clone:
+Why you should use this Watch2Gether Clone:
 * Reponsive, SEO friendly and easy to understand UI
 * Secure (If you should find any bug please report it)
 * Many Features like:
