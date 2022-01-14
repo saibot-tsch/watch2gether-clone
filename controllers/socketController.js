@@ -1,7 +1,6 @@
 const {v4: uuidv4} = require('uuid')
 const axios = require('axios');
 
-const SocketDuplicateRecord = require('../models/SocketDuplicateRecord')
 const SocketBanRecord = require('../models/SocketBanRecord')
 
 const randomString = require('../helpers/randomString')
@@ -10,26 +9,21 @@ const randomInt = require('../helpers/randomInt')
 const parseYTDuration = require('../helpers/parseYTDuration')
 
 const videoRates = new Set([0.5, 0.75, 1, 1.25, 1.5, 1.75, 2])
+const ipDuplicates = {}
 
 module.exports = function(io) {
     io.on('connection', async (socket) => {
         const ip = socket.handshake.address;
         
         // Check if client ip has a connection already
-        const isDuplicate = await SocketDuplicateRecord.findOne({ ip })
+        const isDuplicate = ipDuplicates[ip]
 
         if (isDuplicate) {
             socket.emit('socket_connection_limit')
     
             return socket.disconnect(1);
         } else {
-            await SocketDuplicateRecord.create({ ip }, (err) => {
-                if (err) {
-                    socket.emit('socket_disconnect_error')
-    
-                    return socket.disconnect(1);
-                }
-            })
+            isDuplicate[ip] = true;
         }
 
         // Check if Client IP is banned due too many requests
@@ -582,7 +576,7 @@ module.exports = function(io) {
                 }
             }
 
-            await SocketDuplicateRecord.deleteOne({ ip })
+            ipDuplicates[ip] = false
         })
     })
 }
