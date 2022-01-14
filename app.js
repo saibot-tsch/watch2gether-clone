@@ -9,7 +9,6 @@ const secureHeaders = require('./utils/secureHeaders')
 
 // Models
 const SocketBanRecord = require('./models/SocketBanRecord')
-const SocketDuplicateRecord = require('./models/SocketDuplicateRecord')
 
 // Express & Socket.io Server
 const app = express();
@@ -58,7 +57,6 @@ function shutDown(e) {
 require('./utils/db').then(async() => {
     // Remove Socket Duplicate & Ban Records
     await SocketBanRecord.deleteMany({})
-    await SocketDuplicateRecord.deleteMany({})
 
     // Error Handling
     process.on('uncaughtException', shutDown); 
