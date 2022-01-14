@@ -576,7 +576,7 @@ module.exports = function(io) {
                 }
             }
 
-            ipDuplicates[ip] = false
+            delete ipDuplicates[ip]
         })
     })
 }
